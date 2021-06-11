@@ -1,5 +1,5 @@
 pkgname=dwmblocks-catdevz-git
-pkgver=1.0.r1
+pkgver=1.0.r1.96cddac
 pkgrel=1
 epoch=
 pkgdesc="My personal build of dwmblocks"
