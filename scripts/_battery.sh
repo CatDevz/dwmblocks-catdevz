@@ -2,8 +2,8 @@
 
 # Battery stuff
 
-CAP="$(cat /sys/class/power_supply/BAT1/capacity)"
-STATUS="$(cat /sys/class/power_supply/BAT1/status)"
+CAP="$(cat /sys/class/power_supply/BAT*/capacity)"
+STATUS="$(cat /sys/class/power_supply/BAT*/status)"
 STATE="^c#d3869b^"
 
 if [ "$STATUS" = "Full" ]; then
@@ -30,7 +30,7 @@ elif [ "$STATUS" = "Discharging" ]; then
     else
         ICON=""; STATE="^c#fb4934^"
     fi
-elif [ "$STATUS" = "Not charging"  ]; then
+elif [ "$STATUS" = "Not Charging"  ]; then
     ICON=""
 elif [ "$STATUS" = "Charging" ]; then
     ICON=""

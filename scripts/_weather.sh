@@ -1,8 +1,8 @@
-# _weather.sh
+#!/bin/sh
 
 # Weather info
 
-TEMP="$(curl -s curl -s http://wttr.in/Flint+TX?format\=1\&u)"
+TEMP="$(curl -s curl -s http://wttr.in/?format\=1\&u)"
 
 [ "$TEMP" ] && 
 TEMP=$(echo $TEMP | sed 's/[^0-9+°A-Z\-]//g') &&
