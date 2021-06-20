@@ -1,18 +1,16 @@
 #!/bin/bash
 
-# Volume state output
 VOL="$(pulsemixer --get-volume | awk '{print $1}')"
+MUTED="$(pulsemixer --get-mute)"
 
-if [ "$VOL" -le 0 ]; then
-  VOLSTATE="婢"
-elif [ "$VOL" -le 30 ]; then
-  VOLSTATE="奄" # ﱝ
-elif [ "$VOL" -le 70 ]; then
-  VOLSTATE="奔"
-elif [ "$VOL" -gt 70 ]; then
-  VOLSTATE="墳"
-else
-  VOLSTATE="?"
-fi
+VOLSTATE="?"
 
-echo " ${VOL}% ${VOLSTATE}  "
+[ "$VOL" -le 0  ] && VOLSTATE="婢"
+[ "$VOL" -le 20 ] && VOLSTATE="奄"
+[ "$VOL" -le 60 ] && VOLSTATE="奔"
+[ "$VOL" -gt 60 ] && VOLSTATE="墳"
+
+[ "$MUTED" -ge 1 ] && VOLSTATE="婢" && VOLPREFIX="^c#fb4934^"
+
+echo " ${VOLPREFIX}${VOL}% ${VOLSTATE} ^d^ "
+
